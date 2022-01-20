@@ -11,10 +11,15 @@ export const Text = styled.Text`
     color: #5F5F5F;
     text-align: center;
     font-size: 18px;
+    padding: 20px;
 `;
 
 export const TextTouch = styled.TouchableOpacity`
     flex-direction: column;
     align-Items: center;
     justify-content: center;
+    margin: 10px;
+    border: 2px;
+    border-radius: 15px;
+    border-color: #343434;
 `
