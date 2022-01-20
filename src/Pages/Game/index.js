@@ -1,10 +1,11 @@
 import React, { useState, useEffect} from "react";
 import { ActivityIndicator, FlatList, View } from 'react-native';
-import { ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { Cards, Container, Search, Text, TextAI } from './styles';
 import api  from '../../Service/api';
+import InfoGame from "../../Components/InfoGame";
 
 export default function Games({route}){
     const platform = route.params.platform;
@@ -14,7 +15,7 @@ export default function Games({route}){
     const [data, setData] = useState([]);
 
     useEffect(async() => {
-        await api.post("/games", "fields name; sort name asc; where platforms = "+ Index + "; limit 100;", 
+        await api.post("/games", "fields name, platforms, cover, videos, storyline, summary; sort name asc; where platforms = "+ Index + "; limit 100;", 
         {
             headers: {
                 'Client-ID': 'f7wh9fp8o60qav6ym4znqy8hp4s6h1',
@@ -50,7 +51,7 @@ export default function Games({route}){
                         keyExtractor={(item) => item.id}
                         renderItem={(item) => {
                             return (
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={}>
                                 <Cards>
                                     <Text style={{textAlign:'center'}} key={item.item.id}>{item.item.name}</Text>
                                 </Cards>
